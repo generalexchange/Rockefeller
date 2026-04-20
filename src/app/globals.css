@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #14120f;
+  --color-text-secondary: #4a4740;
+  --color-paper: #faf8f5;
+  --color-hairline: rgba(20, 18, 15, 0.12);
+  --color-gold: #a67c00;
+  --color-gold-dim: #7a5c00;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink antialiased;
+}
+
+/* Accessible focus — gold ring, offset */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Headline hover: thin gold underline animates in (200ms) */
+.headline-link {
+  @apply bg-[length:0%_1px] bg-[position:0_100%] bg-no-repeat transition-[background-size] duration-link ease-out;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-image: linear-gradient(var(--color-gold), var(--color-gold));
+}
+
+.headline-link:hover {
+  @apply bg-[length:100%_1px];
+}
+
+/* Editorial article body (max 680px in layout) */
+.article-body {
+  @apply font-body text-[18px] leading-[1.75] text-ink;
+}
+
+.article-body > p {
+  @apply mb-6;
+}
+
+.article-body > h2 {
+  @apply font-display mt-12 mb-4 text-2xl font-semibold tracking-tight text-ink;
+}
+
+.article-body > h3 {
+  @apply font-display mt-10 mb-3 text-xl font-semibold text-ink;
+}
+
+.article-body a {
+  @apply text-ink underline underline-offset-[3px] transition-colors;
+  text-decoration-color: color-mix(in srgb, var(--color-gold) 45%, transparent);
+}
+
+.article-body a:hover {
+  text-decoration-color: var(--color-gold);
+}
+
+.article-body ul,
+.article-body ol {
+  @apply mb-6 ml-6 list-outside space-y-2;
+}
+
+.article-body ul {
+  @apply list-disc;
+}
+
+.article-body ol {
+  @apply list-decimal;
+}
+
+/* Pull-quote style blockquotes */
+.article-body blockquote {
+  @apply my-10 border-l-[3px] border-gold pl-6 font-display text-xl italic leading-snug text-ink md:text-2xl;
+}
+
+.article-body figcaption {
+  @apply mt-2 font-label text-sm text-muted;
+}
