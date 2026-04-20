@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 import { Playfair_Display, Source_Serif_4, DM_Sans } from 'next/font/google'
 import './globals.css'
 import { Masthead } from '@/components/Masthead'
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteNav />
         <main>{children}</main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   )
